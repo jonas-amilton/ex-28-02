@@ -1,0 +1,91 @@
+<script>
+const data = [
+{
+nome: 'Roger Medeiros',
+sexo: 'M',
+salario: 3250,
+},
+{
+nome: 'Carolina Silva',
+sexo: 'F',
+salario: 1200,
+},
+{
+nome: 'Cristina Avila',
+sexo: 'F',
+salario: 8100,
+},
+{
+nome: 'Gustavo Hoffman',
+sexo: 'M',
+salario: 5200.35,
+},
+{
+nome: 'Eva Trindade',
+sexo: 'F',
+salario: 2501,
+},
+{
+nome: 'Andre Mathias',
+sexo: 'M',
+salario: 1750,
+},
+{
+nome: 'Joice Castro da Silva',
+sexo: 'F',
+salario: 3350.25,
+},
+];
+
+//1. Imprima no console a quantidade de pessoas Total.
+console.log(`A quantidade de pessoas no Total é ${data.length}`);
+
+//2. Imprima no console a quantidade de pessoas pessoas do sexo Feminino.
+const sexoFeminino = data.filter((valor, indice, array) => valor.sexo === 'F');
+    console.log(`A quantidade de pessoas pessoas do sexo Feminino é ${sexoFeminino.length}`);
+
+//3. Imprima no console a soma do salário de todas as pessoas.
+let somaSalario = data.reduce((acc,valor)=>{
+    return acc+= valor.salario
+    },0);
+    console.log(`A soma do salário de todas as pessoas é R$ ${somaSalario.toFixed(2)}`);
+
+//4. Imprima no console a soma do salario de todos as pessoas do sexo Masculino
+let filtraSexo = 'M';
+let filtraMasculino = data.filter(item => item.sexo == filtraSexo);
+let somaSalarioM = filtraMasculino.reduce((acc,valor)=>{
+    return acc+= valor.salario
+    },0);
+    console.log(`A soma do salário das pessoas do sexo Masculino é R$ ${somaSalarioM.toFixed(2)}`);
+    
+/*5. Utilize a função Some, para descobrir se existe algum salário
+superior a R$ 7.000, imprima verdadeiro no console caso exista, caso
+contrário falso.
+*/
+const salarioMaior7 = data.some((valor, indice, array) => valor.salario > 7000)
+console.log(salarioMaior7);
+
+/*6. Utilize a função findIndex, para descobrir a posição
+da pessoa de nome 'Eva Trindade'.
+*/
+const indiceEncontrado = data.findIndex( (valor, indice, array) => valor.nome === 'Eva Trindade')
+console.log(`O indice da Eva é ${indiceEncontrado}`);
+
+/*7. Utilize a função filter, para filtrar todas pessoas
+que o nome possua o sobrenome "Silva".
+*/
+let filtro = 'Silva';
+let filtraSilva = data.filter(item => item.nome.split(' ').slice(-1) == filtro);
+
+//esse console.log imprime o objeto inteiro da pessoa com sobrenome silva dentro do array
+console.log(filtraSilva);
+let somenteNome = filtraSilva.map((value) => value.nome)
+//esse console.log imprime somente o nome da pessoa com sobrenome silva dentro do array
+console.log(somenteNome);
+
+//8. Imprima os nomes utilizando o MAP
+let nomes = data.map((value) => value.nome)
+console.log(nomes);
+
+
+</script>
